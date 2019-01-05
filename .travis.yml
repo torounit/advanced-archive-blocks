@@ -37,7 +37,7 @@ matrix:
 
 before_script:
   - composer install
-  - nvm install lts
+  - nvm install --lts
   - npm install
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - |
