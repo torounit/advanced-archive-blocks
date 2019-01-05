@@ -34,10 +34,6 @@ matrix:
       env: WP_TRAVISCI=phpcs
 
 before_script:
-  - composer install
-  - vendor/bin/phpcs -i
-  - nvm install --lts
-  - npm install
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - |
     if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
@@ -51,7 +47,10 @@ before_script:
       composer global require "phpunit/phpunit=4.8.*|5.7.*"
     fi
   - |
-
+  - composer install
+  - vendor/bin/phpcs -i
+  - nvm install --lts
+  - npm install
 script:
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
