@@ -36,7 +36,7 @@ class Renderer {
 		],
 		'type'              => [
 			'type'    => 'string',
-			'default' => 'monthly'
+			'default' => 'monthly',
 		],
 		'align'             => [
 			'type' => 'string',
@@ -62,7 +62,6 @@ class Renderer {
 		}
 
 		$this->register();
-
 	}
 
 	/**
@@ -88,7 +87,6 @@ class Renderer {
 		}
 
 		if ( ! empty( $attributes['displayAsDropdown'] ) ) {
-
 			$class .= ' wp-block-archives-dropdown';
 
 			$dropdown_id = esc_attr( uniqid( 'wp-block-archives-' ) );
@@ -135,7 +133,6 @@ class Renderer {
 				$block_content
 			);
 		} else {
-
 			$class .= ' wp-block-archives-list';
 
 			$archives_args = array(
@@ -151,14 +148,12 @@ class Renderer {
 			$classnames = esc_attr( $class );
 
 			if ( empty( $archives ) ) {
-
 				$block_content = sprintf(
 					'<div class="%1$s">%2$s</div>',
 					$classnames,
 					__( 'No archives to show.' )
 				);
 			} else {
-
 				$block_content = sprintf(
 					'<ul class="%1$s">%2$s</ul>',
 					$classnames,
@@ -168,7 +163,6 @@ class Renderer {
 		}
 
 		return $block_content;
-
 	}
 
 	/**
