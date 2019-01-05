@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once dirname( __FILE__ ) . '/blocks/archives/class-renderer.php';
 
-
 add_action(
 	'init',
 	function () {
@@ -26,17 +25,14 @@ add_action(
 	'enqueue_block_editor_assets',
 	function () {
 		$deps = [
-			'wp-api-fetch',
 			'wp-blocks',
 			'wp-components',
 			'wp-data',
 			'wp-element',
 			'wp-editor',
-			'wp-edit-post',
 			'wp-i18n',
-			'wp-plugins',
 		];
-		wp_enqueue_script( 'blocks-script', plugins_url( 'dist/main.js', PLUGIN_FILE ), $deps, 1, true );
+		wp_enqueue_script( 'advanced-archive-blocks', plugins_url( 'dist/main.js', PLUGIN_FILE ), $deps, 1, true );
 	}
 );
 

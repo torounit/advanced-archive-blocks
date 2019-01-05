@@ -22,7 +22,7 @@ import {
 } from '@wordpress/editor';
 
 export default function ArchivesEdit( { attributes, setAttributes, postTypes } ) {
-	const { align, showPostCounts, displayAsDropdown, postType } = attributes;
+	const { align, showPostCounts, displayAsDropdown, postType, type } = attributes;
 	return (
 		<Fragment>
 			<InspectorControls>
@@ -38,12 +38,38 @@ export default function ArchivesEdit( { attributes, setAttributes, postTypes } )
 						onChange={ () => setAttributes( { showPostCounts: ! showPostCounts } ) }
 					/>
 					<SelectControl
-						label={ __( 'Post Type' ) }
+						label={ __( 'Type', 'advanced-archive-blocks' ) }
+						value={ undefined !== type ? type : 'monthly' }
+						// `undefined` is required for the postType attribute to be unset.
+						onChange={ ( value ) => setAttributes( { type: value } ) }
+						options={
+							[
+								{
+									value: 'yearly',
+									label: __( 'Yearly', 'advanced-archive-blocks' ),
+								},
+								{
+									value: 'monthly',
+									label: __( 'Monthly', 'advanced-archive-blocks' ),
+								},
+								{
+									value: 'daily',
+									label: __( 'Daily', 'advanced-archive-blocks' ),
+								},
+								{
+									value: 'weekly',
+									label: __( 'Weekly', 'advanced-archive-blocks' ),
+								},
+							]
+						}
+					/>
+					<SelectControl
+						label={ __( 'Post Type', 'advanced-archive-blocks' ) }
 						value={ undefined !== postType ? postType : 'post' }
 						// `undefined` is required for the postType attribute to be unset.
 						onChange={ ( value ) => setAttributes( { postType: value } ) }
 						options={
-							postTypes.map( ( type ) => ( { value: type.slug, label: type.name } ) )
+							postTypes.map( ( { slug, name } ) => ( { value: slug, label: name } ) )
 						}
 					/>
 				</PanelBody>

@@ -34,6 +34,10 @@ class Renderer {
 		'className'         => [
 			'type' => 'string',
 		],
+		'type'              => [
+			'type'    => 'string',
+			'default' => 'monthly'
+		],
 		'align'             => [
 			'type' => 'string',
 		],
@@ -70,7 +74,8 @@ class Renderer {
 	 */
 	public function render( $attributes ) {
 		$show_post_count = ! empty( $attributes['showPostCounts'] );
-		$post_type       = ! empty( $attributes['postType'] );
+		$post_type       = $attributes['postType'];
+		$type            = $attributes['type'];
 
 		$class = 'wp-block-archives';
 
@@ -89,14 +94,11 @@ class Renderer {
 			$dropdown_id = esc_attr( uniqid( 'wp-block-archives-' ) );
 			$title       = __( 'Archives' );
 
-			/** This filter is documented in wp-includes/widgets/class-wp-widget-archives.php */
-			$dropdown_args = apply_filters(
-				'widget_archives_dropdown_args',
-				array(
-					'type'            => 'monthly',
-					'format'          => 'option',
-					'show_post_count' => $show_post_count,
-				)
+			$dropdown_args = array(
+				'type'            => $type,
+				'format'          => 'option',
+				'post_type'       => $post_type,
+				'show_post_count' => $show_post_count,
 			);
 
 			$dropdown_args['echo'] = 0;
@@ -136,13 +138,10 @@ class Renderer {
 
 			$class .= ' wp-block-archives-list';
 
-			/** This filter is documented in wp-includes/widgets/class-wp-widget-archives.php */
-			$archives_args = apply_filters(
-				'widget_archives_args',
-				array(
-					'type'            => 'monthly',
-					'show_post_count' => $show_post_count,
-				)
+			$archives_args = array(
+				'type'            => $type,
+				'post_type'       => $post_type,
+				'show_post_count' => $show_post_count,
 			);
 
 			$archives_args['echo'] = 0;
