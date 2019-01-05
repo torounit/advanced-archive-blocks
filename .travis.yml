@@ -25,9 +25,9 @@ matrix:
     - php: 7.1
       env: WP_VERSION=latest
     - php: 7.0
-      env: WP_VERSION=latest WP_PULUGIN_DEPLOY=1
+      env: WP_VERSION=latest
     - php: 7.0
-      env: WP_VERSION=5.0
+      env: WP_VERSION=5.0 WP_PULUGIN_DEPLOY=1
     - php: 7.0
       env: WP_VERSION=trunk
     - php: 7.0
@@ -48,7 +48,6 @@ before_script:
     fi
   - |
   - composer install
-  - vendor/bin/phpcs -i
   - nvm install --lts
   - npm install
 script:
