@@ -9,22 +9,11 @@ Stable tag: nightly
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create Blocks filtered by any post type and any categories, tags or custom taxonomy terms.
+Add Archive Block support Yearly, Monthly, Daily, Weekly and Post Type.
 
 == Description ==
 
-
-Create Posts Block filtered post type. (ex. post, page) and filter posts by multiple categories, tags or custom taxonomy terms.
-
-Override template by your theme. if `template-parts/blocks/advanced-archive-blocks/posts.php` exists in your theme, replace default view.
-
-Support template hierarchy. The templates are searched in the following order.
-
-1. template-parts/blocks/advanced-archive-blocks/posts/{postType}-{style}.php
-2. template-parts/blocks/advanced-archive-blocks/posts/{postType}.php
-3. template-parts/blocks/advanced-archive-blocks/posts-{style}.php
-4. template-parts/blocks/advanced-archive-blocks/posts.php
-
+Add Archive Block support Yearly, Monthly, Daily, Weekly and Post Type.
 
 == Changelog ==
 
