@@ -35,6 +35,7 @@ matrix:
 
 before_script:
   - composer install
+  - vendor/bin/phpcs -i
   - nvm install --lts
   - npm install
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
